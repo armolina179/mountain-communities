@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Map — Mountain Communities of the World</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <noscript><style>.page-fade-start{opacity:1!important}</style></noscript>
+</head>
+<body class="page-fade-start">
+  <header class="site-header" role="banner">
+    <nav class="top-nav" aria-label="Main">
+      <a class="nav-link" data-fade href="explore.html">Explore</a>
+      <a class="nav-link is-active" href="map.html">Map</a>
+      <a class="nav-link" data-fade href="index.html#/about">About</a>
+      <a class="nav-link" data-fade href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="content">
+    <h1 class="map-hero">Interactive Map</h1>
+    <p id="map-instructions" class="map-note">
+        Click on a continent to learn about their mountain communities!
+      </p>
+
+    <section class="map-layout" aria-label="Interactive map by continent">
+      <!-- LEFT: info panel -->
+      <aside class="continent-panel" aria-live="polite">
+        <div class="continent-scroll">
+          <h2 class="continent-title" id="continent-title">Loading…</h2>
+          <div id="continent-body" class="continent-body"></div>
+        </div>
+      </aside>
+
+      <!-- RIGHT: map panel -->
+      <section class="map-panel" aria-labelledby="map-instructions">
+        <div class="worldmap">
+          <!-- Use any large world map image you prefer -->
+          <img class="worldmap-img" src="assets/worldmap.jpg" alt="World map" />
+
+          <!-- Hotspots (absolute %, click to select) -->
+          <!-- North America -->
+          <button class="hotspot" data-key="na" style="--x:18; --y:30">
+            <span>NORTH AMERICA</span>
+          </button>
+          <!-- South America -->
+          <button class="hotspot" data-key="sa" style="--x:30; --y:62">
+            <span>SOUTH AMERICA</span>
+          </button>
+          <!-- Europe -->
+          <button class="hotspot" data-key="eu" style="--x:54; --y:23">
+            <span>EUROPE</span>
+          </button>
+          <!-- Africa -->
+          <button class="hotspot" data-key="af" style="--x:58; --y:48">
+            <span>AFRICA</span>
+          </button>
+          <!-- Asia -->
+          <button class="hotspot" data-key="as" style="--x:80; --y:30">
+            <span>ASIA</span>
+          </button>
+          <!-- Oceania -->
+          <button class="hotspot" data-key="oc" style="--x:92; --y:60">
+            <span>OCEANIA</span>
+          </button>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="scripts/map.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mountain Communities of the World</title>
+
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-route="home">
+  <header class="site-header" role="banner">
+    <nav class="top-nav" aria-label="Main">
+      <a class="nav-link" data-route-link="explore"  href="explore.html">Explore</a>
+      <a class="nav-link" data-route-link="about" href="#/about">About</a>
+      <a class="nav-link" href="map.html">Map</a>
+      <a class="nav-link" data-fade href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="content">
+    <!-- HOME -->
+    <section class="home-section" aria-label="Explore">
+      <div class="home-hero-slot"></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about-layout" aria-label="About">
+      <aside class="about-left">
+        <div class="about-hero-slot"></div>
+      </aside>
+
+      <section class="about-panel">
+        <div class="about-scroll" role="region" aria-label="About panel">
+          <h1 class="about-hero" tabindex="-1">ABOUT</h1>
+
+          <p>
+            <strong>Mountain Communities of the World</strong> shares stories, context, and data
+            about mountain cultures & landscapes, highlighting their importance and resilience in our rapidly changing world. 
+          </p>
+
+          <h2>Why Mountain Communities Matter</h2>
+          <p>
+            Mountains support biodiversity, freshwater, and cultural heritage, yet face isolation, climate risk, and economic precarity.
+          </p>
+
+          <h2>Key Statistics</h2>
+          <div class="about-table">
+            <div class="about-row about-head">
+              <div>Focus area</div>
+              <div>Statistic</div>
+            </div>
+  
+            <div class="about-row">
+              <div>Population</div>
+              <div>Over 1 billion people live in mountain regions worldwide.</div>
+            </div>
+  
+            <div class="about-row">
+              <div>Biodiversity</div>
+              <div>Mountains are home to about 25% of terrestrial biodiversity.</div>
+            </div>
+  
+            <div class="about-row">
+              <div>Water Resources</div>
+              <div>Mountains provide 60–80% of the world’s freshwater resources.</div>
+            </div>
+  
+            <div class="about-row">
+              <div>Cultural Diversity</div>
+              <div>Hundreds of indigenous languages and cultures are found in mountain areas.</div>
+            </div>
+  
+            <div class="about-row">
+              <div>Climate Change Impact</div>
+              <div>Mountain regions are experiencing climate change at twice the global average rate.</div>
+            </div>
+          </div>
+
+          <h2>Focus & Approach</h2>
+          <ul class="about-list">
+            <li>Mapping communities & eco context</li>
+            <li>Curated resources for educators/students</li>
+            <li>Open data & partner projects</li>
+          </ul>
+
+          <h2>Get Involved</h2>
+          <p>
+            We invite you to explore our website to learn more about mountain communities and discover ways you can get involved. Whether it's through supporting conservation projects, engaging with cultural initiatives, or simply spreading the word, your contribution can make a significant difference.
+          </p>
+
+          <p class="about-foot">Last updated: Sept 2025<br><br><a href="http://arielmolina.work/">Designed & Developed by Ariel Molina</a></p>
+        </div>
+      </section>
+    </section>
+
+    <!-- PERSISTENT HERO -->
+    <div class="hero-wrap" aria-hidden="false">
+      <div class="hero-media">
+        <video class="hero-video" playsinline autoplay muted loop preload="auto"
+               poster="assets/hero-poster.png" style="filter: saturate(1.5);" aria-label="Aerial view of mountain valley and lake">
+          <source src="assets/hero.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <h1 class="hero-title" aria-label="Mountain Communities of the World">
+        <span class="title-line title-line-1">Mountain</span>
+        <span class="title-line title-line-2">Communities</span>
+        <span class="title-line title-line-3">of the World</span>
+      </h1>
+    </div>
+  </main>
+
+  <!-- Screen reader announcer -->
+  <div id="sr-announcer" class="visually-hidden" aria-live="polite"></div>
+
+  <!-- GSAP core + Flip (order matters) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
+  <script src="scripts/aboutscript.js"></script>
+</body>
+</html>

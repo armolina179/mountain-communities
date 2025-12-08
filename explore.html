@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Explore — Mountain Communities of the World</title>
+
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="styles.css"/>
+
+  <!-- Slick CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+</head>
+
+<body class="page-fade-start">
+  <header class="site-header" role="banner">
+    <nav class="top-nav" aria-label="Main">
+      <a class="nav-link is-active" data-fade href="explore.html">Explore</a>
+      <a class="nav-link" data-fade href="index.html#/about">About</a>
+      <a class="nav-link" data-fade href="map.html">Map</a>
+      <a class="nav-link" data-fade href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="content">
+    <section class="explore-viewport" aria-label="Mountain Communities Explore Carousel">
+      <div class="explore-carousel">
+        <!-- 1 -->
+        <article class="explore-slide" aria-label="Quechua People">
+          <figure>
+            <img src="assets/quechuawoman.jpeg" alt="Quechua Woman">
+            <figcaption>
+              <h3 class="explore-title">Andes Mountains, Peru</h3>
+              <p class="explore-meta">Quechua Woman<br>Photographed: Alexander Fiebrandt</p>
+            </figcaption>
+          </figure>
+        </article>
+
+        <!-- 2 -->
+        <article class="explore-slide" aria-label="Jorsale, Nepal">
+          <figure>
+            <img src="assets/jorsale.jpg" alt="Jorsale Village">
+            <figcaption>
+              <h3 class="explore-title">Himalayan Mountains, Nepal</h3>
+              <p class="explore-meta">Jorsale Village<br>Photographed: Dario Severi</p>
+            </figcaption>
+          </figure>
+        </article>
+
+        <!-- 3 -->
+        <article class="explore-slide" aria-label="Quanaaq, Greenland">
+          <figure>
+            <img src="assets/quanaaq.png" alt="Quanaaq Hunter">
+            <figcaption>
+              <h3 class="explore-title">Inglefield Fjord, Greenland</h3>
+              <p class="explore-meta">Inughuit Hunter, Quanaaq<br>Photographed: Paul Nicklen</p>
+            </figcaption>
+          </figure>
+        </article>
+
+        <!-- 4 -->
+        <article class="explore-slide" aria-label="Berber People">
+          <figure>
+            <img src="assets/berbervillage.jpg" alt="Berber Village">
+            <figcaption>
+              <h3 class="explore-title">Atlas Mountains, Morocco</h3>
+              <p class="explore-meta">Berber Village<br>Photographed: Sopotnicki Algarve</p>
+            </figcaption>
+          </figure>
+        </article>
+      </div>
+
+      <noscript><p>Enable JavaScript to view the Explore carousel.</p></noscript>
+    </section>
+    <div class="explore-cta">
+      <a href="https://iwgia.org/en/" target="_blank" rel="noopener noreferrer" class="btn-learn">
+        Learn more! &rarr;
+      </a>
+    </div>    
+  </main>
+
+  <!-- JS: jQuery → Slick → init script -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="scripts/explorescript.js"></script>
+</body>
+</html>
