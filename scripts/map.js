@@ -96,7 +96,7 @@
         title: 'North America',
         sections: [
           { h: 'Rocky Mountains', bullets: [
-            'Tribal homelands (e.g., Ute, Blackfeet, Ktunaxa)',
+            'Tribal homelands (Ute, Blackfeet, Ktunaxa)',
             'Mountain ranching and forestry',
             'Wildlife corridors and conservation',
           ]},
