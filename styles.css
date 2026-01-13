@@ -2,7 +2,11 @@
    Mountain Communities of the World — Styles
    ================================================= */
 
-/* 0. Design tokens */
+/* =================================================
+   GLOBAL STYLES
+   ================================================= */
+
+/* Design tokens */
 :root{
   /* Color */
   --bg: #f5f7f2;
@@ -25,9 +29,14 @@
   --step-0: clamp(1.00rem, 0.95rem + 0.3vw, 1.10rem);
   --step-1: clamp(1.15rem, 1.05rem + 0.7vw, 1.45rem);
   --step-3: clamp(2.2rem, 2.2rem + 3vw, 6.2rem);
+
+  /* Font family aliases */
+  --display: "Display", ui-sans-serif, system-ui, sans-serif;
+  --sans: "Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --sans-light: "Sans-Light", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 }
 
-/* 1. Base and fonts */
+/* Base and fonts */
 *{ box-sizing: border-box; }
 html, body{ height:100%; }
 body{
@@ -39,7 +48,7 @@ body{
   text-rendering: optimizeLegibility;
 }
 
-/* note - stylesheet in folder css so use ../ for asset paths */
+/* Font faces */
 @font-face{
   font-family: "Display";
   src: url("../assets/fonts/ayr-saturday-night-interlock.woff2") format("woff2");
@@ -62,14 +71,7 @@ body{
   font-display: swap;
 }
 
-/* family aliases */
-:root{
-  --display: "Display", ui-sans-serif, system-ui, sans-serif;
-  --sans: "Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-  --sans-light: "Sans-Light", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-}
-
-/* 2. Header and nav */
+/* Header and navigation */
 .site-header{
   background: var(--sage-600);
   position: sticky;
@@ -97,13 +99,9 @@ body{
   display:inline-block;
   transition: color 180ms ease, transform 180ms ease;
 }
-@media (hover:hover){
-  .nav-link:hover{ color:#ffffff; transform: scale(1.08); }
-  .nav-link:active{ transform: scale(.96); }
-}
 .nav-link.is-active{ color:#576746; }
 
-/* 3. Page shell */
+/* Page shell */
 .content{
   max-width: var(--maxw);
   margin: 2rem auto 4rem;
@@ -111,11 +109,22 @@ body{
   padding-bottom: var(--page-bottom-gap);
 }
 
-/* route visibility - simple spa */
+/* Route visibility - simple spa */
 body[data-route="home"]  .about-layout{ display:none; }
 body[data-route="about"] .home-section{ display:none; }
 
-/* 4. Home hero */
+/* Utilities */
+.visually-hidden{
+  position:absolute !important;
+  width:1px; height:1px; margin:-1px; padding:0; border:0;
+  clip: rect(0 0 0 0); overflow:hidden; white-space:nowrap;
+}
+
+/* =================================================
+   INDEX PAGE (Home)
+   ================================================= */
+
+/* Home hero */
 .home-hero-slot .hero-wrap{ position: relative; }
 .hero-media{
   position: relative;
@@ -135,7 +144,7 @@ body[data-route="about"] .home-section{ display:none; }
   text-align:center; pointer-events:none;
 }
 
-/* 5. Title animation only */
+/* Title animation */
 .title-line{
   display:block;
   font-family: var(--display);
@@ -155,22 +164,16 @@ body[data-route="about"] .home-section{ display:none; }
   60%{ opacity:1; transform: translateY(0)    scale(1); }
   100%{ opacity:1; transform: translateY(0)   scale(1); }
 }
-@media (prefers-reduced-motion: reduce){
-  .title-line{ animation:none; opacity:1; transform:none; }
-}
 
-/* 6. About layout - left hero and right scroll */
+/* =================================================
+   ABOUT PAGE
+   ================================================= */
+
+/* About layout - left hero and right scroll */
 .about-layout{
   display:grid;
   grid-template-columns: 420px 1fr;
   gap:2rem;
-}
-@media (max-width: 980px){
-  .about-layout{ grid-template-columns:1fr; }
-  .about-hero-slot .hero-video{ height:min(40vh, 720px); }
-  .about-left{ height: auto; }
-  .about-panel{ height: auto; }
-  .about-scroll{ max-height:none; }
 }
 
 .about-left{ 
@@ -213,12 +216,12 @@ body[data-route="about"] .home-section{ display:none; }
   text-align:center; pointer-events:none;
 }
 
-/* smaller title in left card */
+/* Smaller title in left card */
 .about-hero-slot .title-line-1{ font-size:4rem; }
 .about-hero-slot .title-line-2{ font-size:3.3rem; }
 .about-hero-slot .title-line-3{ font-size:2.63rem; }
 
-/* 7. About right panel */
+/* About right panel */
 .about-panel{
   position:relative;
   border-radius: var(--radius-xl);
@@ -238,7 +241,7 @@ body[data-route="about"] .home-section{ display:none; }
   scroll-behavior: smooth;
 }
 
-/* About typography and bits */
+/* About typography */
 .about-hero{
   font-family: var(--sans-light);
   font-size: 3.5vw;
@@ -307,33 +310,7 @@ body[data-route="about"] .home-section{ display:none; }
 }
 .about-table .about-row:last-child > div{ border-bottom:none; }
 
-@media (max-width:720px){
-  .about-hero{ font-size:3rem; }
-  .about-table{ grid-template-columns:1fr; }
-  .about-row > div{ border-right:none !important; }
-  .about-head{ height:0; visibility:hidden; }
-  .about-row{
-    display:grid; grid-template-columns:1fr;
-    background: rgba(255,255,255,.04);
-  }
-  .about-row > div:first-child{
-    font-weight:700; background: var(--bg); color: var(--sage-700);
-  }
-  .about-row > div:nth-child(even){
-    font-size:.7rem; padding-left:50px;
-  }
-  .about-hero-slot .hero-video{ height: min(40vh, 720px); }
-  .about-panel{ bottom:20px; }
-}
-
-/* 8. Utilities */
-.visually-hidden{
-  position:absolute !important;
-  width:1px; height:1px; margin:-1px; padding:0; border:0;
-  clip: rect(0 0 0 0); overflow:hidden; white-space:nowrap;
-}
-
-/* about scroller polish */
+/* About scroller polish */
 .about-panel{ overflow:hidden; min-width:0; }
 .about-scroll{
   overflow-y:auto; overflow-x:hidden; min-width:0;
@@ -348,76 +325,11 @@ body[data-route="about"] .home-section{ display:none; }
 }
 .about-scroll::-webkit-scrollbar-corner{ background:transparent; }
 
-/* 9. Contact */
-.contact-layout{ display:block; }
-.contact-panel{
-  position:relative;
-  border-radius: var(--radius-xl);
-  background: var(--sage-600);
-  color:#eef3ea;
-  border:1px solid rgba(0,0,0,.08);
-  box-shadow:0 12px 30px rgba(0,0,0,.10);
-  overflow:hidden;
-}
-.contact-inner{ padding: clamp(1rem, 2.5vw, 2rem); }
-.contact-hero{
-  font-family: var(--sans-light);
-  font-size: clamp(2.6rem, 3.6vw, 4.2rem);
-  line-height:1.1;
-  margin:.25rem 0 1.2rem;
-  color:#fff;
-  letter-spacing:.02em;
-}
-
-/* form controls */
-.contact-form{ display:grid; gap:1rem; max-width:600px; margin:0 auto; }
-.field{ display:grid; gap:.35rem; }
-.field p{ font-size:12px; opacity:80%; font-family: var(--sans-light); }
-label{
-  font-family: var(--sans);
-  font-weight:600;
-  font-size: var(--step--1);
-  color: var(--bg);
-}
-input, textarea{
-  font:inherit; color: var(--ink); background: var(--bg);
-  border:1px solid rgba(0,0,0,.55); border-radius:10px; padding:.65rem .8rem; width:100%;
-}
-
-/* form validation */
-.field.invalid input,
-.field.invalid textarea{
-  border-color: var(--rust-500);
-  box-shadow: 0 0 0 2px rgba(226,85,85,.15);
-}
-.field-error{ color: var(--bg); font-size: var(--step--1); margin:.25rem 0 0; }
-
-/* antispam */
-.hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
-
-/* submit button */
-.btn-primary{
-  align-self:start;
-  background: var(--rust-500);
-  border:1px solid rgba(0,0,0,.15);
-  border-radius:12px;
-  padding:.6rem 1rem;
-  font-family: var(--sans);
-  color: var(--bg);
-  cursor:pointer;
-  transition: transform 150ms ease;
-}
-@media (hover:hover){
-  .btn-primary:hover{ transform: translateY(-1.5px); }
-  .btn-primary:active{ transform: translateY(0); }
-}
-.form-status{ margin-top:.5rem; color:#fff; }
-
 /* =================================================
-   Explore page - Slick carousel
+   EXPLORE PAGE
    ================================================= */
 
-/* container */
+/* Container */
 .explore-viewport{
   position:relative;
   overflow:hidden;
@@ -426,7 +338,7 @@ input, textarea{
   padding: clamp(.5rem, 1vw, 1rem);
 }
 
-/* slide card */
+/* Slide card */
 .explore-slide{ padding: clamp(.6rem, 1.5vw, 1rem); outline:none; }
 .explore-slide figure{
   display:grid; grid-template-rows:auto auto; gap:.5rem;
@@ -450,20 +362,20 @@ input, textarea{
   opacity:.75; margin: 0 .75rem .9rem .75rem;
 }
 
-/* emphasis */
+/* Emphasis */
 .slick-slide figure{ opacity:.65; filter: saturate(.9) contrast(.95); }
 .slick-center figure{ opacity:1; filter:none; box-shadow:0 10px 28px rgba(0,0,0,.12); }
 .slick-center img{ transform: scale(1); }
 
-/* dots */
+/* Dots */
 .slick-dots li button:before{ color: var(--ink); opacity:.35; }
 .slick-dots li.slick-active button:before{ opacity:.85; }
 
-/* arrows - hide stock glyphs so only svg shows */
+/* Arrows - hide stock glyphs so only svg shows */
 .slick-prev:before,
 .slick-next:before{ content:""; }
 
-/* arrow buttons */
+/* Arrow buttons */
 .custom-arrow{
   display:flex !important;
   align-items:center; justify-content:center;
@@ -475,7 +387,7 @@ input, textarea{
   transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
 }
 
-/* arrow placement */
+/* Arrow placement */
 .slick-prev, .slick-next{
   top:50%;
   transform: translateY(-50%);
@@ -489,30 +401,14 @@ input, textarea{
 .custom-arrow:focus-visible{ outline:2px solid var(--ink); outline-offset:2px; }
 .slick-disabled{ opacity:.45; pointer-events:none; }
 
-/* responsive tweaks */
-@media (max-width:1024px){
-  .explore-slide img{ height: clamp(200px, 32vw, 300px); }
-}
-@media (max-width:768px){
-  .explore-slide img{ height: clamp(180px, 40vw, 260px); }
-  .slick-prev{ left:10px; } .slick-next{ right:10px; }
-}
-@media (max-width:640px){
-  .explore-slide img{ height: clamp(160px, 48vw, 220px); }
-  .custom-arrow{ width:42px; height:42px; }
-}
-
-/* ===== Explore carousel — final, authoritative arrow overrides ===== */
-
-/* 1. never show Slick's built-in glyphs */
+/* Explore carousel — final, authoritative arrow overrides */
 .explore-viewport .slick-prev:before,
 .explore-viewport .slick-next:before { content: "" !important; }
 
-/* 2. arrow containers centered vertically and inset */
 .explore-viewport .slick-prev,
 .explore-viewport .slick-next{
   top: 50% !important;
-  transform: translateY(-15%) !important; /* fix from -10% */
+  transform: translateY(-15%) !important;
   z-index: 6 !important;
   width: auto !important;
   height: auto !important;
@@ -521,7 +417,6 @@ input, textarea{
 .explore-viewport .slick-prev { left: 16px !important; }
 .explore-viewport .slick-next { right: 16px !important; }
 
-/* 3. our SVG button size and look */
 .explore-viewport .custom-arrow{
   display: flex !important;
   align-items: center; justify-content: center;
@@ -537,13 +432,6 @@ input, textarea{
 .explore-viewport .custom-arrow:hover        { background: rgba(255,255,255,0.92) !important; transform: translateY(-1px) !important; }
 .explore-viewport .custom-arrow:active       { transform: translateY(0) !important; }
 .explore-viewport .custom-arrow:focus-visible{ outline: 2px solid var(--ink) !important; outline-offset: 2px !important; }
-
-/* 4. phones */
-@media (max-width: 640px){
-  .explore-viewport .custom-arrow { width: 42px !important; height: 42px !important; }
-  .explore-viewport .slick-prev   { left: 10px !important; }
-  .explore-viewport .slick-next   { right: 10px !important; }
-}
 
 /* Explore CTA button */
 .explore-cta {
@@ -575,7 +463,10 @@ input, textarea{
   outline-offset: 2px;
 }
 
-/* ---------- MAP PAGE ---------- */
+/* =================================================
+   MAP PAGE
+   ================================================= */
+
 .map-hero{
   font-family: var(--sans-light);
   font-size: 2.5rem;
@@ -586,10 +477,6 @@ input, textarea{
   display: grid;
   grid-template-columns: 520px 1fr;   /* info left, map right */
   gap: 2rem;
-
-}
-@media (max-width: 980px){
-  .map-layout{ grid-template-columns: 1fr; }
 }
 
 /* Info panel (left) */
@@ -677,17 +564,20 @@ input, textarea{
   color: var(--sage-700);
   display: grid; place-items: center;
   cursor: pointer;
-  transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+  transition: opacity 160ms ease, 
+              transform 160ms ease, 
+              background 160ms ease, 
+              box-shadow 160ms ease;
+  opacity: .18;                          /* mostly hidden */
 }
 .hotspot span{
   font-family: var(--sans);
   font-weight: 700;
   color: var(--rust-500);
   font-size: clamp(.75rem, .55rem + .5vw, 1rem);
-}
-@media (hover:hover){
-  .hotspot:hover{ transform: translate(-50%, -50%) scale(1.06); background: rgba(255,255,255,.5); }
-  .hotspot:active{ transform: translate(-50%, -50%) scale(.98); }
+  transition: opacity 140ms ease, transform 140ms ease;
+  opacity: 0;
+  transform: translateY(2px);
 }
 .hotspot[aria-pressed="true"]{
   border-color: var(--rust-500);
@@ -699,15 +589,6 @@ input, textarea{
   font-family: var(--sans-light);
   color: var(--sage-600);
   font-size: var(--step-0);
-}
-
-/* Subtle-by-default hotspots */
-.hotspot{
-  opacity: .18;                          /* mostly hidden */
-  transition: opacity 160ms ease, 
-              transform 160ms ease, 
-              background 160ms ease, 
-              box-shadow 160ms ease;
 }
 
 /* When the map itself is hovered/focused, gently reveal all */
@@ -727,12 +608,6 @@ input, textarea{
   border-color: var(--rust-500);
 }
 
-/* Label fades in only when interacting */
-.hotspot span{
-  transition: opacity 140ms ease, transform 140ms ease;
-  opacity: 0;
-  transform: translateY(2px);
-}
 .hotspot:hover span,
 .hotspot:focus-visible span,
 .hotspot[aria-pressed="true"] span{
@@ -740,7 +615,136 @@ input, textarea{
   transform: none;
 }
 
-/* Touch devices: no hover, so keep them a bit more visible */
+/* =================================================
+   CONTACT PAGE
+   ================================================= */
+
+.contact-layout{ display:block; }
+.contact-panel{
+  position:relative;
+  border-radius: var(--radius-xl);
+  background: var(--sage-600);
+  color:#eef3ea;
+  border:1px solid rgba(0,0,0,.08);
+  box-shadow:0 12px 30px rgba(0,0,0,.10);
+  overflow:hidden;
+}
+.contact-inner{ padding: clamp(1rem, 2.5vw, 2rem); }
+.contact-hero{
+  font-family: var(--sans-light);
+  font-size: clamp(2.6rem, 3.6vw, 4.2rem);
+  line-height:1.1;
+  margin:.25rem 0 1.2rem;
+  color:#fff;
+  letter-spacing:.02em;
+}
+
+/* Form controls */
+.contact-form{ display:grid; gap:1rem; max-width:600px; margin:0 auto; }
+.field{ display:grid; gap:.35rem; }
+.field p{ font-size:12px; opacity:80%; font-family: var(--sans-light); }
+label{
+  font-family: var(--sans);
+  font-weight:600;
+  font-size: var(--step--1);
+  color: var(--bg);
+}
+input, textarea{
+  font:inherit; color: var(--ink); background: var(--bg);
+  border:1px solid rgba(0,0,0,.55); border-radius:10px; padding:.65rem .8rem; width:100%;
+}
+
+/* Form validation */
+.field.invalid input,
+.field.invalid textarea{
+  border-color: var(--rust-500);
+  box-shadow: 0 0 0 2px rgba(226,85,85,.15);
+}
+.field-error{ color: var(--bg); font-size: var(--step--1); margin:.25rem 0 0; }
+
+/* Antispam */
+.hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+
+/* Submit button */
+.btn-primary{
+  align-self:start;
+  background: var(--rust-500);
+  border:1px solid rgba(0,0,0,.15);
+  border-radius:12px;
+  padding:.6rem 1rem;
+  font-family: var(--sans);
+  color: var(--bg);
+  cursor:pointer;
+  transition: transform 150ms ease;
+}
+.form-status{ margin-top:.5rem; color:#fff; }
+
+/* =================================================
+   MEDIA QUERIES
+   ================================================= */
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce){
+  .title-line{ animation:none; opacity:1; transform:none; }
+}
+
+/* Max Width 1024px */
+@media (max-width: 1024px){
+  /* About Page */
+  .about-layout{ grid-template-columns:1fr; }
+  .about-hero-slot .hero-video{ height:min(40vh, 720px); }
+  .about-left{ height: auto; }
+  .about-panel{ height: auto; }
+  .about-scroll{ max-height:none; }
+  
+  /* Explore Page */
+  .explore-slide img{ height: clamp(200px, 32vw, 300px); }
+  
+  /* Map Page */
+  .map-layout{ grid-template-columns: 1fr; }
+}
+
+/* Max Width 768px */
+@media (max-width: 768px){
+  /* About Page */
+  .about-hero{ font-size:3rem; }
+  .about-table{ grid-template-columns:1fr; }
+  .about-row > div{ border-right:none !important; }
+  .about-head{ height:0; visibility:hidden; }
+  .about-row{
+    display:grid; grid-template-columns:1fr;
+    background: rgba(255,255,255,.04);
+  }
+  .about-row > div:first-child{
+    font-weight:700; background: var(--bg); color: var(--sage-700);
+  }
+  .about-row > div:nth-child(even){
+    font-size:.7rem; padding-left:50px;
+  }
+  .about-hero-slot .hero-video{ height: min(40vh, 720px); }
+  .about-panel{ bottom:20px; }
+  
+  /* Explore Page */
+  .explore-slide img{ height: clamp(160px, 48vw, 220px); }
+  .slick-prev{ left:10px; } 
+  .slick-next{ right:10px; }
+  .custom-arrow{ width:42px; height:42px; }
+  .explore-viewport .custom-arrow { width: 42px !important; height: 42px !important; }
+  .explore-viewport .slick-prev   { left: 10px !important; }
+  .explore-viewport .slick-next   { right: 10px !important; }
+}
+
+/* Hover States */
+@media (hover:hover){
+  .nav-link:hover{ color:#ffffff; transform: scale(1.08); }
+  .nav-link:active{ transform: scale(.96); }
+  .hotspot:hover{ transform: translate(-50%, -50%) scale(1.06); background: rgba(255,255,255,.5); }
+  .hotspot:active{ transform: translate(-50%, -50%) scale(.98); }
+  .btn-primary:hover{ transform: translateY(-1.5px); }
+  .btn-primary:active{ transform: translateY(0); }
+}
+
+/* Touch Devices */
 @media (hover: none) and (pointer: coarse){
   .hotspot{ opacity: .45; }
 }
