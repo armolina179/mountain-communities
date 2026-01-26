@@ -29,7 +29,25 @@ $(function () {
       return;
     }
   
-    $(".explore-carousel").slick({
+    function syncNarrativeToSlide(index) {
+      var $narratives = $(".explore-narrative");
+      var n = $narratives.length;
+      if (!n) return;
+      var i = ((index % n) + n) % n;
+      $narratives.removeClass("is-active").eq(i).addClass("is-active");
+    }
+
+    var $carousel = $(".explore-carousel");
+
+    // Bind before .slick() so 'init' runs on first load. These persist across responsive re-inits.
+    $carousel.on("init", function (event, slick) {
+      syncNarrativeToSlide(slick.currentSlide);
+    });
+    $carousel.on("afterChange", function (event, slick, currentSlide) {
+      syncNarrativeToSlide(currentSlide);
+    });
+
+    $carousel.slick({
       // Center Mode (React Slick parity)
       className: "center",
       centerMode: true,
@@ -37,14 +55,14 @@ $(function () {
       centerPadding: "6px",
       slidesToShow: 3,
       speed: 500,
-  
+
       // UI
       dots: true,
       arrows: true,
       swipeToSlide: true,
       pauseOnFocus: true,
       lazyLoad: "ondemand",
-  
+
       // Custom, larger arrow buttons using inline SVG (accessible)
       prevArrow:
         '<button type="button" class="slick-prev custom-arrow" aria-label="Previous slide">' +

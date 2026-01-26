@@ -38,10 +38,14 @@
 
 /* Base and fonts */
 *{ box-sizing: border-box; }
-html, body{ height:100%; }
+html{
+  min-height: 100%;
+  background-color: #D9E1D9;
+}
+
+html, body{ min-height: 100%; }
 body{
   margin:0;
-  background: var(--bg);
   color: var(--ink);
   font-family: var(--sans, "Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji");
   line-height:1.45;
@@ -51,21 +55,21 @@ body{
 /* Font faces */
 @font-face{
   font-family: "Display";
-  src: url("../assets/fonts/ayr-saturday-night-interlock.woff2") format("woff2");
+  src: url("assets/fonts/ayr-saturday-night-interlock.woff2") format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 @font-face{
   font-family: "Sans";
-  src: url("../assets/fonts/antique-olive-std-roman.woff2") format("woff2");
+  src: url("assets/fonts/antique-olive-std-roman.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face{
   font-family: "Sans-Light";
-  src: url("../assets/fonts/antique-olive-std-light.woff2") format("woff2");
+  src: url("assets/fonts/antique-olive-std-light.woff2") format("woff2");
   font-weight: 100;
   font-style: normal;
   font-display: swap;
@@ -432,6 +436,41 @@ body[data-route="about"] .home-section{ display:none; }
 .explore-viewport .custom-arrow:hover        { background: rgba(255,255,255,0.92) !important; transform: translateY(-1px) !important; }
 .explore-viewport .custom-arrow:active       { transform: translateY(0) !important; }
 .explore-viewport .custom-arrow:focus-visible{ outline: 2px solid var(--ink) !important; outline-offset: 2px !important; }
+
+/* Explore content — narratives below carousel */
+.explore-content {
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+  padding: 0 clamp(1rem, 4vw, 2rem);
+  max-width: min(900px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.explore-narrative {
+  display: none;
+}
+.explore-narrative.is-active {
+  display: block;
+}
+
+.explore-content-title {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: clamp(1.05rem, 1.2rem + 0.5vw, 1.35rem);
+  color: var(--sage-700);
+  margin: 0 0 0.75em;
+  line-height: 1.2;
+  text-align: center ;
+}
+
+.explore-content p {
+  font-family: var(--sans-light);
+  font-size: clamp(0.9rem, 0.95rem + 0.4vw, 1.05rem);
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+}
 
 /* Explore CTA button */
 .explore-cta {
